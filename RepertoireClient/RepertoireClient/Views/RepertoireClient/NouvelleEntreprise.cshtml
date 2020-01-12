@@ -1,0 +1,58 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.RepertoireClient.cshtml";
+}
+
+
+<script type="text/javascript" src="~/Scripts/Models.js"></script>
+<script type="text/javascript" src="~/Scripts/IO.js"></script>
+
+<style>
+    .transparent {
+        background-color: transparent;
+        border-style: none;
+        width: 100%;
+    }
+</style>
+
+<div class="jumbotron">
+    <div>
+        <h1><input id="entreprise_name" type="text" class="transparent" placeholder="ENTREPRISE"></h1>
+        <p>Tel : <input id="telephone" class="transparent" type="text" /></p>
+        <p>Fax : <input id="fax" class="transparent" type="tel" /></p>
+        <p><input id="cde_ordre" class="transparent" type="text" placeholder="Code de donneur d'ordres" /></p>
+        <p><input id="web_site" class="btn btn-primary btn-lg" placeholder="Site Web &raquo;" /></p>
+    </div>
+    <p><input id="saveBtn" class="btn btn-default" value="Enregistrer" /></p>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Contact</h2>
+        <table id="contacts">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>e-Mail</th>
+                </tr>
+            </thead>
+            <tbody id="contact_content">
+                <tr>
+                    <td><input type="text" placeholder="Nom" /></td>
+                    <td><input type="email" placeholder="e-Mail" /></td>
+                </tr>
+            </tbody>
+        </table>
+        <p><input id="ajouter_contact" class="btn btn-default" type="button" value="Ajouter un contact" /></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Coordonnées</h2>
+        <p><input id="ville" class="transparent" placeholder="Ville" /></p>
+        <p><input id="code_postal" class="transparent" placeholder="code postal" /></p>
+        <p><input id="rue" class="transparent" placeholder="Rue" /></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Commentaire</h2>
+        <input id="commentaire" type="text" />
+
+    </div>
+</div>
+
