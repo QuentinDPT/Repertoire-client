@@ -61,7 +61,7 @@ namespace RepertoireClient.Models
             if (d == null)
                 d = Services.IO.Delimitter;
 
-            return Entreprise_ID +
+            return Entreprise_ID.ToString() +
                 d + Nom +
                 d + Mail +
                 d + Telephone;

@@ -3,9 +3,6 @@
     ViewBag.Title = "Nouvelle entreprise" ;
 }
 
-<script type="text/javascript" src="~/Scripts/Models.js"></script>
-<script type="text/javascript" src="~/Scripts/IO.js"></script>
-
 <style>
     .transparent {
         background-color: transparent;
@@ -18,29 +15,74 @@
     }
 </style>
 
+<script>
+    function validation() {
+        let entrp = htmlToModel();
+
+        if (entrp.Nom == "" ||
+            entrp.Code_Ordre == "" ||
+            entrp.Code_Postal == "" ||
+            entrp.Telephone == "") {
+            alert("Certaines informations doivent être renseignées");
+            return;
+        }
+
+        sendEntreprise(entrp, function () { window.location.href = 'Entreprises';});
+    }
+</script>
+
 <div class="jumbotron row">
     <div class="col-md-6">
-        <h1><input type="text" class="transparent" placeholder="Entreprise" /></h1>
-        <p>Tel : <input type="text" class="transparent" placeholder="Téléphone" /></p>
-        <p>Fax : <input type="text" class="transparent" placeholder="Fax" /></p>
-        <p><input type="text" class="transparent" placeholder="Code d'ordre"/></p>
-        <p><input type="text" class="btn btn-primary btn-lg" placeholder="Site Web &raquo;" /></p>
+        <h1><input type="text" id="entreprise_name" class="transparent" placeholder="Entreprise" /></h1>
+        <p>Tel : <input type="text" id="telephone" class="transparent" placeholder="Téléphone" /></p>
+        <p>Fax : <input type="text" id="fax" class="transparent" placeholder="Fax" /></p>
+        <p><input type="text" id="cde_ordre" class="transparent" placeholder="Code d'ordre"/></p>
+        <p><input type="text" id="web_site" class="btn btn-primary btn-lg" placeholder="Site Web &raquo;" /></p>
     </div>
     <div class="col-md-6">
         <h2>Horraires</h2>
-        <p>Du Model.OuvertureAM.DayOfWeek au Model.FermeturePM.DayOfWeek</p>
-        <p>De Model.OuvertureAM.ToString("H:mm") à Model.FermetureAM.ToString("H:mm") - Model.OuverturePM.ToString("H:mm") à Model.FermeturePM.ToString("H:mm")</p>
         <p>
-            Sauf le Model.Fermeture_exceptionnelleAM.DayOfWeek de Model.Fermeture_exceptionnelleAM.ToString("H:mm") à Model.Fermeture_exceptionnellePM.ToString("H:mm")<br />
-            (Model.Fermeture_exceptionnelleSpecification)
+            Du
+            <select id="jour_ouverture" value="Lundi">
+                <option>Lundi</option>
+                <option>Mardi</option>
+                <option>Mercredi</option>
+                <option>Jeudi</option>
+                <option>Vendredi</option>
+                <option>Samedi</option>
+                <option>Dimanche</option>
+            </select> au
+            <select id="jour_fermeture" value="Vendredi">
+                <option>Lundi</option>
+                <option>Mardi</option>
+                <option>Mercredi</option>
+                <option>Jeudi</option>
+                <option>Vendredi</option>
+                <option>Samedi</option>
+                <option>Dimanche</option>
+            </select>
+        </p>
+        <p>De <input type="time"> à <input type="time"> - <input type="time"> à <input type="time"></p>
+        <p>
+            Sauf le
+            <select id="jour_exeptionnel" value="Vendredi">
+                <option>Lundi</option>
+                <option>Mardi</option>
+                <option>Mercredi</option>
+                <option>Jeudi</option>
+                <option>Vendredi</option>
+                <option>Samedi</option>
+                <option>Dimanche</option>
+            </select><br />de <input type="time"> à <input type="time"><br />
+            (<input type="text" placeholder="Description">)
         </p>
     </div>
 </div>
 <div class="row">
     <div class="col-md-4">
         <h2>Coordonnées</h2>
-        <p><input type="text" placeholder="Rue/Voie"/> - <input type="text" placeholder="Code postal" /></p>
-        <p><input type="text" placeholder="Ville" /></p>
+        <p><input type="text" id="rue" placeholder="Rue/Voie"/> - <input type="text" id="code_postal" placeholder="Code postal" /></p>
+        <p><input type="text" id="ville" placeholder="Ville" /></p>
     </div>
     <div class="col-md-8">
         <h2>Contact(s)</h2>
@@ -53,13 +95,10 @@
                 </tr>
             </thead>
             <tbody id="contact_content">
-                <tr>
-                    <td><input type="text" placeholder="Nom"/></td>
-                    <td><input type="text" placeholder="Mail" /></td>
-                    <td><input type="text" placeholder="Téléphone" /></td>
-                </tr>
+                <tr id="last_contact"></tr>
             </tbody>
         </table>
+        <input id="add_contact" type="button" class="btn btn-default" value="+ Ajouter"/>
     </div>
 </div>
 <div class="row">
@@ -67,21 +106,48 @@
         <h2>Compétences</h2>
         <p>Materiel</p>
         <ul class="checkbox">
-            <li><input type="checkbox" /> Porteur</li>
-            <li><input type="checkbox" /> Semis-Remorque</li>
-            <li><input type="checkbox" /> Vul</li>
-            <li><input type="checkbox" /> Haillon</li>
-            <li><input type="checkbox" /> Tire palette</li>
+            <li><input type="checkbox" id="porteur" /> Porteur</li>
+            <li><input type="checkbox" id="semis" /> Semis-Remorque</li>
+            <li><input type="checkbox" id="vul" /> Vul</li>
+            <li><input type="checkbox" id="haillon" /> Haillon</li>
+            <li><input type="checkbox" id="tire_pal" /> Tire palette</li>
         </ul>
         <p>Remorques</p>
         <ul class="checkbox">
-            <li><input type="checkbox" /> Tautliner</li>
-            <li><input type="checkbox" /> Fourgon</li>
-            <li><input type="checkbox" /> Frigorifique</li>
+            <li><input type="checkbox" id="tautliner" /> Tautliner</li>
+            <li><input type="checkbox" id="fourgon" /> Fourgon</li>
+            <li><input type="checkbox" id="frigo" /> Frigorifique</li>
         </ul>
     </div>
     <div class="col-md-8">
         <h2>Commentaire(s)</h2>
-        <input type="text"/>
+        <input type="text" id="commentaire" />
+        <input type="button" class="btn btn-primary" id="addEntreprise" value="Enregistrer" onclick="validation()" />
     </div>
 </div>
+
+<script>
+    var zn_contact = document.getElementById("contact_content");
+    var btn_add_contact = document.getElementById("add_contact");
+
+    var count_contacts = 1;
+
+    btn_add_contact.addEventListener("click", function () {
+        document.getElementById("last_contact").outerHTML =
+           '<tr id="contact_' + count_contacts + '">\
+                <td><input class="name" type="text" placeholder="Nom" /></td>\
+                <td><input class="mail" type="text" placeholder="Mail" /></td>\
+                <td><input class="tel" type="text" placeholder="Téléphone" /></td>\
+                <td><input id="btn_supp_contact_' + count_contacts + '" type="button" class="btn btn-danger" value="Supprimer" /></td>\
+            </tr>\
+            <div id="last_contact"></div>' ;
+
+        document.getElementById("btn_supp_contact_" + count_contacts).addEventListener("click", function (e) {
+            document.getElementById("contact_" + e.toElement.id.substring(17)).outerHTML = "";
+            console.log("suppression : " + "contact_" + e.toElement.id.substring(17));
+        });
+
+        count_contacts++;
+    });
+
+</script>

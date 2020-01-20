@@ -14,7 +14,15 @@ namespace RepertoireClient.ViewModel
         /// <summary>
         /// Identifiant unique de l'entreprise
         /// </summary>
-        public int ID;
+        public int ID {
+            get { return ID; }
+            set {
+                for(int i = 0; i<this.Contacts.Count; i++){
+                    this.Contacts[i].Entreprise_ID = value;
+                }
+                ID = value;
+            }
+        }
 
         /// <summary>
         /// Nom de l'entreprise
@@ -45,40 +53,46 @@ namespace RepertoireClient.ViewModel
 
         #region Horraires
 
+        public string JourOuverture;
+
+        public string JourFermeture;
+
         /// <summary>
         /// Heure d'ouverture (Matin) de l'entreprise
         /// </summary>
-        public DateTime OuvertureAM;
+        public string OuvertureAM;
 
         /// <summary>
         /// Heure de fermeture (Matin) de l'entreprise
         /// </summary>
-        public DateTime FermetureAM;
+        public string FermetureAM;
 
         /// <summary>
         /// Heure d'ouverture (Après-midi) de l'entreprise
         /// </summary>
-        public DateTime OuverturePM;
+        public string OuverturePM;
 
         /// <summary>
         /// Heure de fermeture (Après-midi) de l'entreprise
         /// </summary>
-        public DateTime FermeturePM;
+        public string FermeturePM;
 
         /// <summary>
         /// Spécificités des fermetures exceptionnelles
         /// </summary>
         public string Fermeture_exceptionnelleSpecification;
 
+        public string JourFermeture_exceptionnelle;
+
         /// <summary>
         /// Jour et heure de fermeture exceptionnelle le matin
         /// </summary>
-        public DateTime Fermeture_exceptionnelleAM;
+        public string Fermeture_exceptionnelleAM;
 
         /// <summary>
         /// Jour et heure de fermeture exceptionnelle l'après-midi
         /// </summary>
-        public DateTime Fermeture_exceptionnellePM;
+        public string Fermeture_exceptionnellePM;
 
         #endregion
 

@@ -48,22 +48,22 @@ namespace RepertoireClient.Models
         /// <summary>
         /// Heure d'ouverture (Matin) de l'entreprise
         /// </summary>
-        public DateTime OuvertureAM;
+        public string OuvertureAM;
 
         /// <summary>
         /// Heure de fermeture (Matin) de l'entreprise
         /// </summary>
-        public DateTime FermetureAM;
+        public string FermetureAM;
 
         /// <summary>
         /// Heure d'ouverture (Après-midi) de l'entreprise
         /// </summary>
-        public DateTime OuverturePM;
+        public string OuverturePM;
 
         /// <summary>
         /// Heure de fermeture (Après-midi) de l'entreprise
         /// </summary>
-        public DateTime FermeturePM;
+        public string FermeturePM;
 
         /// <summary>
         /// Spécificités des fermetures exceptionnelles
@@ -73,12 +73,12 @@ namespace RepertoireClient.Models
         /// <summary>
         /// Jour et heure de fermeture exceptionnelle le matin
         /// </summary>
-        public DateTime Fermeture_exceptionnelleAM;
+        public string Fermeture_exceptionnelleAM;
 
         /// <summary>
         /// Jour et heure de fermeture exceptionnelle l'après-midi
         /// </summary>
-        public DateTime Fermeture_exceptionnellePM;
+        public string Fermeture_exceptionnellePM;
 
         #endregion
 
@@ -205,27 +205,30 @@ namespace RepertoireClient.Models
             if (d == null)
                 d = Services.IO.Delimitter;
 
-            return ID +
+            return ID.ToString() +
+                d + Nom +
                 d + Site +
                 d + Code_Ordre +
                 d + Telephone +
                 d + Fax +
                 d + OuvertureAM +
+                d + FermetureAM +
+                d + OuverturePM +
                 d + FermeturePM +
                 d + Fermeture_exceptionnelleSpecification +
                 d + Fermeture_exceptionnelleAM +
                 d + Fermeture_exceptionnellePM +
                 d + Rue +
-                d + Code_Ordre +
+                d + Code_Postal +
                 d + Ville +
-                d + Porteur +
-                d + Semis_Remorque +
-                d + Vul +
-                d + Haillon +
-                d + Tire_Palette +
-                d + Remorque_Tautliner +
-                d + Remorque_Fourgon +
-                d + Remorque_Frigorifique +
+                d + (Porteur ? 'x' : ' ') +
+                d + (Semis_Remorque ? 'x' : ' ') +
+                d + (Vul ? 'x' : ' ') +
+                d + (Haillon ? 'x' : ' ') +
+                d + (Tire_Palette ? 'x' : ' ') +
+                d + (Remorque_Tautliner ? 'x' : ' ') +
+                d + (Remorque_Fourgon ? 'x' : ' ') +
+                d + (Remorque_Frigorifique ? 'x' : ' ') +
                 d + Commentaire;
         }
     }

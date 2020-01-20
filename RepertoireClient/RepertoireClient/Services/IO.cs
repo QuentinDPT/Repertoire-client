@@ -10,7 +10,7 @@ namespace RepertoireClient.Services
         /// <summary>
         /// Document CSV de sauvegarde et de restauration
         /// </summary>
-        public static string Document = "C:/Users/PC-Quentin/Desktop/ProjetGefco/RepertoireClient/RepertoireClient/data.csv";
+        public static string Document;
 
         /// <summary>
         /// Délimitteur dans le document CSV
@@ -69,10 +69,68 @@ namespace RepertoireClient.Services
         /// <param name="document">document à modifier</param>
         public static void addEntreprise(ViewModel.Entreprise entreprise, string document)
         {
+            List<string> fileContent = System.IO.File.ReadAllLines(document).ToList();
             List<ViewModel.Employee> emps = entreprise.Contacts;
 
+            int i ;
+            int id = 1;
 
-            System.IO.File.WriteAllText(document, entreprise.toModels().toCSV());
+            // Add Entreprise
+
+            for (i = 0; i < fileContent.Count && fileContent[i].Trim(new Char[] { Delimitter }) != "<ENTREPRISES>"; i++) { }
+
+            for (i++; i < fileContent.Count && fileContent[i].Trim(new Char[] { Delimitter }) != ""; i++)
+            {
+                int curr_id = int.Parse(fileContent[i].Split(Delimitter)[0]);
+                if (id <= curr_id)
+                    id = curr_id + 1;
+            }
+
+            if (i >= fileContent.Count)
+                return ;
+
+            entreprise.ID = id;
+
+            fileContent.Insert(i, entreprise.toModels().toCSV());
+
+
+            // Add contacts
+            
+            for (i++; i < fileContent.Count && fileContent[i].Trim(new Char[] { Delimitter }) != "<CONTACTS>"; i++) { }
+
+            for (i++; i < fileContent.Count && fileContent[i].Trim(new Char[] { Delimitter }) != ""; i++){ }
+
+
+            List<string> lst_contacts = new List<string>();
+
+            for(int j = 0; j<entreprise.Contacts.Count; j++)
+            {
+                lst_contacts.Add(entreprise.Contacts[j].toModel().toCSV());
+            }
+
+            fileContent.InsertRange(i, lst_contacts);
+
+            System.IO.File.WriteAllLines(document, fileContent);
+        }
+
+        public static void removeEntreprise(int id, string doc)
+        {
+            List<string> fileContent = System.IO.File.ReadAllLines(doc).ToList();
+
+            for(int i = 0; i<fileContent.Count; i++)
+            {
+                try
+                {
+                    if (int.Parse(fileContent[i].Split(Delimitter)[0]) == id)
+                    {
+                        fileContent.RemoveAt(i);
+                        i--;
+                    }
+                }
+                catch (Exception e) { };
+            }
+
+            System.IO.File.WriteAllLines(doc, fileContent);
         }
 
 
@@ -95,12 +153,6 @@ namespace RepertoireClient.Services
                     return rezz;
                 string[] line = fileContent[i].Split(Delimitter);
 
-
-                DateTime _OuvertureAM = DateTime.Parse(line[6]);
-                DateTime _FermetureAM = DateTime.Parse(line[7]);
-                DateTime _OuverturePM = DateTime.Parse(line[8]);
-                DateTime _FermeturePM = DateTime.Parse(line[9]);
-
                 rezz.Add(new Models.Entreprise()
                 {
                     ID = int.Parse(line[0]),
@@ -109,13 +161,13 @@ namespace RepertoireClient.Services
                     Code_Ordre = line[3],
                     Telephone = line[4],
                     Fax = line[5],
-                    OuvertureAM = _OuvertureAM,
-                    FermetureAM = _FermetureAM,
-                    OuverturePM = _OuverturePM,
-                    FermeturePM = _FermeturePM,
+                    OuvertureAM = line[6],
+                    FermetureAM = line[7],
+                    OuverturePM = line[8],
+                    FermeturePM = line[9],
                     Fermeture_exceptionnelleSpecification = line[10],
-                    Fermeture_exceptionnelleAM = DateTime.Parse(line[11]),
-                    Fermeture_exceptionnellePM = DateTime.Parse(line[12]),
+                    Fermeture_exceptionnelleAM = line[11],
+                    Fermeture_exceptionnellePM = line[12],
                     Rue = line[13],
                     Code_Postal = line[14],
                     Ville = line[15],

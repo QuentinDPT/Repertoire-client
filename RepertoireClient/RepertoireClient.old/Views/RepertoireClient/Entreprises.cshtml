@@ -1,0 +1,79 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.RepertoireClient.cshtml";
+
+}
+
+
+<script type="text/javascript" src="~/Scripts/Models.js"></script>
+<script type="text/javascript" src="~/Scripts/IO.js"></script>
+
+<style>
+    table {
+        width: 100%;
+    }
+
+    tbody {
+        overflow: auto;
+    }
+
+    tr {
+    }
+
+    .hide{
+        display: none ;
+    }
+</style>
+
+
+<div class="jumbotron">
+    <h1>Rechercher une entreprise</h1>
+    <p>Entreprise : <input id="SearchBar" class="transparent" type="text" placeholder="Gefco" /></p>
+</div>
+
+<div class="row">
+    <p>@Model.Count entreprises répertoriées</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Entreprise</th>
+                <th>Téléphone</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="entreprises">
+            @for (var i = 0; i < Model.Count; i++)
+            {
+                <tr id="line_@i">
+                    <td>@Model[i].Nom</td>
+                    <td>@Model[i].Telephone</td>
+                    <td>Ouvert</td>
+                    <td><input type="button" onclick="location.href='/RepertoireClient/Entreprise?EntrepriseID=@Model[i].ID';" class="btn btn-default" value="Précisions &raquo;" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<script>
+    let searchBar = document.getElementById("SearchBar");
+
+    searchBar.oninput = function () {
+        if (searchBar.value == "") {
+            for (let i = 0; i < @Model.Count ; i++) {
+                document.getElementById("line_" + i).classList.remove("hide");
+            }
+        } else {
+            for (let i = 0; i < @Model.Count ; i++) {
+                let elem = document.getElementById("line_" + i);
+                if (elem.innerText.toLowerCase().includes(searchBar.value.toLowerCase())) {
+                    elem.classList.remove("hide");
+                } else {
+                    elem.classList.add("hide");
+                }
+            }
+        }
+    }
+
+</script>
