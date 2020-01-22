@@ -18,6 +18,14 @@
     .hide{
         display: none ;
     }
+
+    #entreprises tr{
+        transition: 0.5s;
+    }
+
+    #entreprises tr:hover{
+        background-color: #EEE ;
+    }
 </style>
 
 
@@ -38,13 +46,13 @@
             </tr>
         </thead>
         <tbody id="entreprises">
-            @for (var i = 0; i < Model.Count; i++)
+            @for (var i = Model.Count-1; i > 0; i--)
             {
                 <tr id="line_@i">
                     <td>@Model[i].Nom</td>
                     <td>@Model[i].Telephone</td>
                     <td>Ouvert</td>
-                    <td><input type="button" onclick="location.href='/RepertoireClient/Entreprise?EntrepriseID=@Model[i].ID';" class="btn btn-default" value="Précisions &raquo;" /></td>
+                    <td><input type="button" onclick="location.href='/RepertoireClient/Entreprise?EntrepriseID=@Model[i].ID';" class="btn btn-outline-secondary" value="Précisions &raquo;" /></td>
                 </tr>
             }
         </tbody>

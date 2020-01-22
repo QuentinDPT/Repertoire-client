@@ -15,14 +15,20 @@ namespace RepertoireClient.ViewModel
         /// Identifiant unique de l'entreprise
         /// </summary>
         public int ID {
-            get { return ID; }
+            get { return _ID; }
             set {
-                for(int i = 0; i<this.Contacts.Count; i++){
-                    this.Contacts[i].Entreprise_ID = value;
+                if (Contacts != null)
+                {
+                    for (int i = 0; i < this.Contacts.Count; i++)
+                    {
+                        this.Contacts[i].Entreprise_ID = value;
+                    }
                 }
-                ID = value;
+                _ID = value;
             }
         }
+
+        private int _ID;
 
         /// <summary>
         /// Nom de l'entreprise
@@ -179,6 +185,45 @@ namespace RepertoireClient.ViewModel
 
         public Models.Entreprise toModels()
         {
+            string[] tmp;
+
+            // Heure d'ouverture matin
+            tmp = this.OuvertureAM == "" ? new[] {"00","00" } : this.OuvertureAM.Split(new[] { ':' });        // Donne une date d'ouverture en fonction du jour
+            DateTime _OuvertureAM = new DateTime(
+                2018,1,dayToInt(this.JourOuverture),
+                int.Parse(tmp[0]),int.Parse(tmp[1]),0);
+
+            // Heure de fermeture matin
+            tmp = this.FermetureAM == "" ? new[] { "00", "00" } : this.FermetureAM.Split(new[] { ':' });        // Donne une heure de fermeture en fonction du jour
+            DateTime _FermetureAM = new DateTime(
+                2018, 1, 1,
+                int.Parse(tmp[0]), int.Parse(tmp[1]), 0);
+
+            // Heure d'ouverture apres midi
+            tmp = this.OuverturePM == "" ? new[] { "00", "00" } : this.OuverturePM.Split(new[] { ':' });        // Donne une heure d'ouverture en fonction du jour
+            DateTime _OuverturePM = new DateTime(
+                2018, 1, 1,
+                int.Parse(tmp[0]), int.Parse(tmp[1]), 0);
+
+            // Heure de fermeture apres midi
+            tmp = this.FermeturePM == "" ? new[] { "00", "00" } : this.FermeturePM.Split(new[] { ':' });        // Donne une date de fermeture en fonction du jour
+            DateTime _FermeturePM = new DateTime(
+                2018, 1, dayToInt(this.JourFermeture),
+                int.Parse(tmp[0]), int.Parse(tmp[1]), 0);
+
+
+            // Heure de fermeture exceptionnelle debut
+            tmp = this.Fermeture_exceptionnelleAM == "" ? new[] { "00", "00" } : this.Fermeture_exceptionnelleAM.Split(new[] { ':' });        // Donne une date de fermeture en fonction du jour
+            DateTime _FermetureExBeg = new DateTime(
+                2018, 1, dayToInt(this.JourFermeture_exceptionnelle),
+                int.Parse(tmp[0]), int.Parse(tmp[1]), 0);
+
+            // Heure de fermeture exceptionnelle fin
+            tmp = this.Fermeture_exceptionnellePM == "" ? new[] { "00", "00" } : this.Fermeture_exceptionnellePM.Split(new[] { ':' });        // Donne une date de fermeture en fonction du jour
+            DateTime _FermetureExEnd = new DateTime(
+                2018, 1, dayToInt(this.JourFermeture_exceptionnelle),
+                int.Parse(tmp[0]), int.Parse(tmp[1]), 0);
+
             return new Models.Entreprise()
             {
                 ID = this.ID,
@@ -187,13 +232,13 @@ namespace RepertoireClient.ViewModel
                 Code_Ordre = this.Code_Ordre,
                 Telephone = this.Telephone,
                 Fax = this.Fax,
-                OuvertureAM = this.OuvertureAM,
-                FermetureAM = this.FermetureAM,
-                OuverturePM = this.OuverturePM,
-                FermeturePM = this.FermeturePM,
+                OuvertureAM = _OuvertureAM,
+                FermetureAM = _FermetureAM,
+                OuverturePM = _OuverturePM,
+                FermeturePM = _FermeturePM,
                 Fermeture_exceptionnelleSpecification = this.Fermeture_exceptionnelleSpecification,
-                Fermeture_exceptionnelleAM = this.Fermeture_exceptionnelleAM,
-                Fermeture_exceptionnellePM = this.Fermeture_exceptionnellePM,
+                Fermeture_exceptionnelleAM = _FermetureExBeg,
+                Fermeture_exceptionnellePM = _FermetureExEnd,
                 Rue = this.Rue,
                 Code_Postal = this.Code_Postal,
                 Ville = this.Ville,
@@ -207,6 +252,29 @@ namespace RepertoireClient.ViewModel
                 Remorque_Frigorifique = this.Remorque_Frigorifique,
                 Commentaire = this.Commentaire
             };
+        }
+
+        private int dayToInt(string day)
+        {
+            switch (day.ToLower())
+            {
+                case "lundi":
+                    return 1;
+                case "mardi":
+                    return 2;
+                case "mercredi":
+                    return 3;
+                case "jeudi":
+                    return 4;
+                case "vendredi":
+                    return 5;
+                case "samedi":
+                    return 6;
+                case "dimanche":
+                    return 7;
+                default:
+                    return 0;
+            }
         }
     }
 }

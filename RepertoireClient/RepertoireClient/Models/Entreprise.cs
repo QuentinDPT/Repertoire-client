@@ -48,22 +48,22 @@ namespace RepertoireClient.Models
         /// <summary>
         /// Heure d'ouverture (Matin) de l'entreprise
         /// </summary>
-        public string OuvertureAM;
+        public DateTime OuvertureAM;
 
         /// <summary>
         /// Heure de fermeture (Matin) de l'entreprise
         /// </summary>
-        public string FermetureAM;
+        public DateTime FermetureAM;
 
         /// <summary>
         /// Heure d'ouverture (Après-midi) de l'entreprise
         /// </summary>
-        public string OuverturePM;
+        public DateTime OuverturePM;
 
         /// <summary>
         /// Heure de fermeture (Après-midi) de l'entreprise
         /// </summary>
-        public string FermeturePM;
+        public DateTime FermeturePM;
 
         /// <summary>
         /// Spécificités des fermetures exceptionnelles
@@ -73,12 +73,12 @@ namespace RepertoireClient.Models
         /// <summary>
         /// Jour et heure de fermeture exceptionnelle le matin
         /// </summary>
-        public string Fermeture_exceptionnelleAM;
+        public DateTime Fermeture_exceptionnelleAM;
 
         /// <summary>
         /// Jour et heure de fermeture exceptionnelle l'après-midi
         /// </summary>
-        public string Fermeture_exceptionnellePM;
+        public DateTime Fermeture_exceptionnellePM;
 
         #endregion
 
@@ -164,6 +164,10 @@ namespace RepertoireClient.Models
         /// <returns>View model associé au model</returns>
         public ViewModel.Entreprise toVM()
         {
+            string jfe = intToDay((int)this.Fermeture_exceptionnelleAM.DayOfWeek);
+            string jo = intToDay((int)this.OuvertureAM.DayOfWeek);
+            string jf = intToDay((int)this.FermeturePM.DayOfWeek);
+
             return new ViewModel.Entreprise()
             {
                 ID = this.ID,
@@ -173,13 +177,16 @@ namespace RepertoireClient.Models
                 Telephone = this.Telephone,
                 Fax = this.Fax,
                 Contacts = new List<ViewModel.Employee>(),
-                OuvertureAM = this.OuvertureAM,
-                FermetureAM = this.FermetureAM,
-                OuverturePM = this.OuverturePM,
-                FermeturePM = this.FermeturePM,
+                JourOuverture = jo,
+                JourFermeture = jf,
+                OuvertureAM = this.OuvertureAM.ToString("HH:mm"),
+                FermetureAM = this.FermetureAM.ToString("HH:mm"),
+                OuverturePM = this.OuverturePM.ToString("HH:mm"),
+                FermeturePM = this.FermeturePM.ToString("HH:mm"),
                 Fermeture_exceptionnelleSpecification = this.Fermeture_exceptionnelleSpecification,
-                Fermeture_exceptionnelleAM = this.Fermeture_exceptionnelleAM,
-                Fermeture_exceptionnellePM = this.Fermeture_exceptionnellePM,
+                JourFermeture_exceptionnelle = jfe,
+                Fermeture_exceptionnelleAM = this.Fermeture_exceptionnelleAM.ToString("HH:mm"),
+                Fermeture_exceptionnellePM = this.Fermeture_exceptionnellePM.ToString("HH:mm"),
                 Rue = this.Rue,
                 Code_Postal = this.Code_Postal,
                 Ville = this.Ville,
@@ -211,13 +218,13 @@ namespace RepertoireClient.Models
                 d + Code_Ordre +
                 d + Telephone +
                 d + Fax +
-                d + OuvertureAM +
-                d + FermetureAM +
-                d + OuverturePM +
-                d + FermeturePM +
+                d + OuvertureAM.ToString() +
+                d + FermetureAM.ToString() +
+                d + OuverturePM.ToString() +
+                d + FermeturePM.ToString() +
                 d + Fermeture_exceptionnelleSpecification +
-                d + Fermeture_exceptionnelleAM +
-                d + Fermeture_exceptionnellePM +
+                d + Fermeture_exceptionnelleAM.ToString() +
+                d + Fermeture_exceptionnellePM.ToString() +
                 d + Rue +
                 d + Code_Postal +
                 d + Ville +
@@ -230,6 +237,29 @@ namespace RepertoireClient.Models
                 d + (Remorque_Fourgon ? 'x' : ' ') +
                 d + (Remorque_Frigorifique ? 'x' : ' ') +
                 d + Commentaire;
+        }
+
+        private static string intToDay(int day)
+        {
+            switch (day)
+            {
+                case 1:
+                    return "Lundi";
+                case 2:
+                    return "Mardi";
+                case 3:
+                    return "Mercredi";
+                case 4:
+                    return "Jeudi";
+                case 5:
+                    return "Vendredi";
+                case 6:
+                    return "Samedi";
+                case 7:
+                    return "Dimanche";
+                default:
+                    return "";
+            }
         }
     }
 }

@@ -20,8 +20,6 @@
         let entrp = htmlToModel();
 
         if (entrp.Nom == "" ||
-            entrp.Code_Ordre == "" ||
-            entrp.Code_Postal == "" ||
             entrp.Telephone == "") {
             alert("Certaines informations doivent être renseignées");
             return;
@@ -33,8 +31,8 @@
 
 <div class="jumbotron row">
     <div class="col-md-6">
-        <h1><input type="text" id="entreprise_name" class="transparent" placeholder="Entreprise" /></h1>
-        <p>Tel : <input type="text" id="telephone" class="transparent" placeholder="Téléphone" /></p>
+        <h1><input type="text" id="entreprise_name" class="transparent" placeholder="Entreprise" required/></h1>
+        <p>Tel : <input type="text" id="telephone" class="transparent" placeholder="Téléphone" required/></p>
         <p>Fax : <input type="text" id="fax" class="transparent" placeholder="Fax" /></p>
         <p><input type="text" id="cde_ordre" class="transparent" placeholder="Code d'ordre"/></p>
         <p><input type="text" id="web_site" class="btn btn-primary btn-lg" placeholder="Site Web &raquo;" /></p>
@@ -43,7 +41,7 @@
         <h2>Horraires</h2>
         <p>
             Du
-            <select id="jour_ouverture" value="Lundi">
+            <select id="jour_ouverture">
                 <option>Lundi</option>
                 <option>Mardi</option>
                 <option>Mercredi</option>
@@ -52,29 +50,29 @@
                 <option>Samedi</option>
                 <option>Dimanche</option>
             </select> au
-            <select id="jour_fermeture" value="Vendredi">
+            <select id="jour_fermeture">
                 <option>Lundi</option>
                 <option>Mardi</option>
                 <option>Mercredi</option>
                 <option>Jeudi</option>
-                <option>Vendredi</option>
+                <option selected="selected">Vendredi</option>
                 <option>Samedi</option>
                 <option>Dimanche</option>
             </select>
         </p>
-        <p>De <input type="time"> à <input type="time"> - <input type="time"> à <input type="time"></p>
+        <p>De <input type="time" id="oAM"> à <input type="time" id="fAM"> - <input type="time" id="oPM"> à <input type="time" id="fPM"></p>
         <p>
             Sauf le
-            <select id="jour_exeptionnel" value="Vendredi">
+            <select id="jour_exeptionnel">
                 <option>Lundi</option>
                 <option>Mardi</option>
                 <option>Mercredi</option>
                 <option>Jeudi</option>
-                <option>Vendredi</option>
+                <option selected="selected">Vendredi</option>
                 <option>Samedi</option>
                 <option>Dimanche</option>
-            </select><br />de <input type="time"> à <input type="time"><br />
-            (<input type="text" placeholder="Description">)
+            </select><br />de <input type="time" id="feAM"> à <input type="time" id="fePM"><br />
+            (<input type="text" id="feDesc" placeholder="Description">)
         </p>
     </div>
 </div>

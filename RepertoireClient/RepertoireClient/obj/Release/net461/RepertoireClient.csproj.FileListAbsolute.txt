@@ -363,3 +363,4 @@ C:\Users\YP9NSS\Documents\Dev\Repertoire-client\RepertoireClient\RepertoireClien
 C:\Users\YP9NSS\Documents\Dev\Repertoire-client\RepertoireClient\RepertoireClient\obj\Release\net461\RepertoireClient.csproj.CopyComplete
 C:\Users\YP9NSS\Documents\Dev\Repertoire-client\RepertoireClient\RepertoireClient\obj\Release\net461\RepertoireClient.exe
 C:\Users\YP9NSS\Documents\Dev\Repertoire-client\RepertoireClient\RepertoireClient\obj\Release\net461\RepertoireClient.pdb
+C:\Users\YP9NSS\Documents\Dev\Repertoire-client\RepertoireClient\RepertoireClient\obj\Release\net461\Razor\Views\RepertoireClient\Edit.g.cshtml.cs

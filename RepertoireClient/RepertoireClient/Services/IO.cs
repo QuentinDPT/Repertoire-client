@@ -113,9 +113,17 @@ namespace RepertoireClient.Services
             System.IO.File.WriteAllLines(document, fileContent);
         }
 
-        public static void removeEntreprise(int id, string doc)
+        /// <summary>
+        /// Enlève une entreprise
+        /// </summary>
+        /// <param name="id">identifiant de l'entreprise</param>
+        /// <param name="doc">document à modifier</param>
+        /// <returns></returns>
+        public static bool removeEntreprise(int id, string doc)
         {
             List<string> fileContent = System.IO.File.ReadAllLines(doc).ToList();
+
+            bool lineRemoved = false;
 
             for(int i = 0; i<fileContent.Count; i++)
             {
@@ -124,6 +132,7 @@ namespace RepertoireClient.Services
                     if (int.Parse(fileContent[i].Split(Delimitter)[0]) == id)
                     {
                         fileContent.RemoveAt(i);
+                        lineRemoved = true;
                         i--;
                     }
                 }
@@ -131,8 +140,24 @@ namespace RepertoireClient.Services
             }
 
             System.IO.File.WriteAllLines(doc, fileContent);
+
+            return lineRemoved;
         }
 
+        /// <summary>
+        /// Modifie une entreprise existante
+        /// </summary>
+        /// <param name="entreprise">entreprise à modifier</param>
+        /// <param name="document">document à modifier</param>
+        public static bool modifyEntreprise(ViewModel.Entreprise entreprise, string document)
+        {
+            if (entreprise.ID != 0 && removeEntreprise(entreprise.ID, document))
+            {
+                addEntreprise(entreprise, document);
+                return true;
+            }
+            return false;
+        }
 
         private static List<Models.Entreprise> _getEntreprises(string document)
         {
@@ -161,13 +186,13 @@ namespace RepertoireClient.Services
                     Code_Ordre = line[3],
                     Telephone = line[4],
                     Fax = line[5],
-                    OuvertureAM = line[6],
-                    FermetureAM = line[7],
-                    OuverturePM = line[8],
-                    FermeturePM = line[9],
+                    OuvertureAM = Convert.ToDateTime(line[6]),
+                    FermetureAM = Convert.ToDateTime(line[7]),
+                    OuverturePM = Convert.ToDateTime(line[8]),
+                    FermeturePM = Convert.ToDateTime(line[9]),
                     Fermeture_exceptionnelleSpecification = line[10],
-                    Fermeture_exceptionnelleAM = line[11],
-                    Fermeture_exceptionnellePM = line[12],
+                    Fermeture_exceptionnelleAM = Convert.ToDateTime(line[11]),
+                    Fermeture_exceptionnellePM = Convert.ToDateTime(line[12]),
                     Rue = line[13],
                     Code_Postal = line[14],
                     Ville = line[15],

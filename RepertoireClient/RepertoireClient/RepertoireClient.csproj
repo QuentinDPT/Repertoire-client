@@ -3,6 +3,13 @@
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
     <DebugType>full</DebugType>
+    <ApplicationIcon></ApplicationIcon>
+    <OutputType>WinExe</OutputType>
+    <StartupObject />
+    <Win32Resource />
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>false</DelaySign>
+    <AssemblyOriginatorKeyFile>fichier.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
 

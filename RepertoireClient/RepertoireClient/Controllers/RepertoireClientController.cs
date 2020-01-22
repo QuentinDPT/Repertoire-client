@@ -42,9 +42,12 @@ namespace RepertoireClient.Controllers
         }
 
         // GET: RepertoireClient/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int EntrepriseID = -1)
         {
-            return View();
+            if (EntrepriseID == -1)
+                return RedirectToAction("Entreprises", "RepertoireClient");
+
+            return View(Services.IO.getEntreprises(Services.IO.Document).Where(x => x.ID == EntrepriseID).SingleOrDefault());
         }
 
 

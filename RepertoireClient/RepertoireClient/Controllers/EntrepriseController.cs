@@ -36,6 +36,7 @@ namespace RepertoireClient.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] ViewModel.Entreprise entreprise)
         {
+            Services.IO.modifyEntreprise(entreprise, Services.IO.Document);
         }
 
         // DELETE: api/ApiWithActions/5
