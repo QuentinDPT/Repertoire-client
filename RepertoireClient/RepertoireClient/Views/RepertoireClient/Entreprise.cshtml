@@ -29,13 +29,13 @@
 <div class="jumbotron row">
     <div class="col-md-6">
         <h1>@Model.Nom</h1>
-        <p>Tel : @Model.Telephone</p>
+        <p>Tél : @Model.Telephone</p>
         <p>Fax : @Model.Fax</p>
         <p>@Model.Code_Ordre</p>
         <p><input id="web_site" type="button" onclick="window.open('@Model.Site', '_blank');" class="btn btn-primary btn-lg" value="Site Web &raquo;" /></p>
     </div>
     <div class="col-md-6">
-        <h2>Horraires</h2>
+        <h2>Horaires</h2>
         <p>Du @Model.JourOuverture au @Model.JourFermeture<br/>
         De @Model.OuvertureAM à @Model.FermetureAM - @Model.OuverturePM à @Model.FermeturePM</p>
         <p>Sauf le @Model.JourFermeture_exceptionnelle de @Model.Fermeture_exceptionnelleAM à @Model.Fermeture_exceptionnellePM<br/>
@@ -113,7 +113,7 @@
             }
             @if (Model.Semis_Remorque)
             {
-                <li>Semis-Remorque</li>
+                <li>Semi-remorque</li>
             }
             @if (Model.Vul)
             {
@@ -121,11 +121,11 @@
             }
             @if (Model.Haillon)
             {
-                <li>Haillon</li>
+                <li>Hayon</li>
             }
             @if (Model.Tire_Palette)
             {
-                <li>Tire palette</li>
+                <li>Tire-palette</li>
             }
             @if (Model.Remorque_Tautliner)
             {

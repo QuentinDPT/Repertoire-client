@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\YP9NSS\\Documents\\Dev\\Repertoire-client\\RepertoireClient\\RepertoireClient\\RepertoireClient.csproj": {}
+    "C:\\Users\\quentin\\Source\\Repos\\Repertoire-Client\\RepertoireClient\\RepertoireClient\\RepertoireClient.csproj": {}
   },
   "projects": {
-    "C:\\Users\\YP9NSS\\Documents\\Dev\\Repertoire-client\\RepertoireClient\\RepertoireClient\\RepertoireClient.csproj": {
+    "C:\\Users\\quentin\\Source\\Repos\\Repertoire-Client\\RepertoireClient\\RepertoireClient\\RepertoireClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\YP9NSS\\Documents\\Dev\\Repertoire-client\\RepertoireClient\\RepertoireClient\\RepertoireClient.csproj",
+        "projectUniqueName": "C:\\Users\\quentin\\Source\\Repos\\Repertoire-Client\\RepertoireClient\\RepertoireClient\\RepertoireClient.csproj",
         "projectName": "RepertoireClient",
-        "projectPath": "C:\\Users\\YP9NSS\\Documents\\Dev\\Repertoire-client\\RepertoireClient\\RepertoireClient\\RepertoireClient.csproj",
-        "packagesPath": "C:\\Users\\YP9NSS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\YP9NSS\\Documents\\Dev\\Repertoire-client\\RepertoireClient\\RepertoireClient\\obj\\",
+        "projectPath": "C:\\Users\\quentin\\Source\\Repos\\Repertoire-Client\\RepertoireClient\\RepertoireClient\\RepertoireClient.csproj",
+        "packagesPath": "C:\\Users\\quentin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\quentin\\Source\\Repos\\Repertoire-Client\\RepertoireClient\\RepertoireClient\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\YP9NSS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\quentin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -83,7 +83,8 @@
               "target": "Package",
               "version": "[2.2.4, )"
             }
-          }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
