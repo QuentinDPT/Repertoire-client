@@ -1,16 +1,18 @@
 # Repertoire-client
 
-## Installation
+## Guide d'installation
 
  - Téléchargez le document `./RepertoireClient/Publication`
 
- - Renseignez le document cible dans `./Publication/properties.xml`, la rubrique ``
+ - Renseignez le document cible dans `./Publication/properties.xml`, entre les balises `<file>` et `</file>`
+ 
+ > faites attention, le document cible doit exister et doit contenir les balises `<ENTREPRISES>` et `<CONTACTS>`
 
  - Exécutez le programme `./Publication/RepertoireClient.exe`
 
  - Accédez à la page web `http://localhost:5000`
 
-## Démarrage automatique
+### Démarrage automatique
 
 Le démarrage automatique peut être utile si ça ne vous dérange pas d'avoir un service qui tourne en arrière plan.
 L'application sera à tout moment accessible (pas de programme à exécuter)
