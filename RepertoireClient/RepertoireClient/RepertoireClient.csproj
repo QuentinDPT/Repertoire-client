@@ -4,7 +4,7 @@
     <TargetFramework>net461</TargetFramework>
     <DebugType>full</DebugType>
     <ApplicationIcon></ApplicationIcon>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <StartupObject />
     <Win32Resource />
     <SignAssembly>true</SignAssembly>
