@@ -1,0 +1,4 @@
+<properties>
+  <file>./data.csv</file>
+  <delimitter>;</delimitter>
+</properties>

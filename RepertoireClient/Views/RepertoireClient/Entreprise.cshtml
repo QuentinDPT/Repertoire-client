@@ -1,0 +1,152 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.RepertoireClient.cshtml";
+    ViewBag.Title = Model.Nom;
+}
+
+<style>
+    .transparent {
+        background-color: transparent;
+        border-style: none;
+        width: 100%;
+    }
+
+    table {
+        width: 100%;
+    }
+</style>
+
+<script>
+    function suppress_entreprise() {
+        deleteEntreprise(new URL(location.href).searchParams.get("EntrepriseID"), function () { window.location.href = 'Entreprises';});
+    }
+    function modify_entreprise() {
+        let entreprise_ID = new URL(location.href).searchParams.get("EntrepriseID");
+        window.location.href = 'Edit?EntrepriseID=' + entreprise_ID;
+    }
+</script>
+
+
+<div class="jumbotron row">
+    <div class="col-md-6">
+        <h1>@Model.Nom</h1>
+        <p>Tél : @Model.Telephone</p>
+        <p>Fax : @Model.Fax</p>
+        <p>@Model.Code_Ordre</p>
+        <p><input id="web_site" type="button" onclick="window.open('@Model.Site', '_blank');" class="btn btn-primary btn-lg" value="Site Web &raquo;" /></p>
+    </div>
+    <div class="col-md-6">
+        <h2>Horaires</h2>
+        <p>Du @Model.JourOuverture au @Model.JourFermeture<br/>
+        De @Model.OuvertureAM à @Model.FermetureAM - @Model.OuverturePM à @Model.FermeturePM</p>
+        <p>Sauf le @Model.JourFermeture_exceptionnelle de @Model.Fermeture_exceptionnelleAM à @Model.Fermeture_exceptionnellePM<br/>
+        (@Model.Fermeture_exceptionnelleSpecification)</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Coordonnées</h2>
+        <p>@Model.Rue - @Model.Code_Postal</p>
+        <p>@Model.Ville</p>
+    </div>
+    <div class="col-md-8">
+        @if (Model.Contacts.Count > 1)
+        {
+            <h2>Contacts</h2>
+        }
+        else
+        {
+            <h2>Contact</h2>
+        }
+        @if (Model.Contacts.Count > 9)
+        {
+            <table id="contacts" style="max-height: 200px;overflow: auto;display: block;">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>e-Mail</th>
+                        <th>Téléphone</th>
+                    </tr>
+                </thead>
+                <tbody id="contact_content">
+                    @for (var i = 0; i < Model.Contacts.Count; i++)
+                    {
+                        <tr>
+                            <td>@Model.Contacts[i].Nom</td>
+                            <td>@Model.Contacts[i].Mail</td>
+                            <td>@Model.Contacts[i].Telephone</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <table id="contacts" style="">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>e-Mail</th>
+                        <th>Téléphone</th>
+                    </tr>
+                </thead>
+                <tbody id="contact_content">
+                    @for (var i = 0; i < Model.Contacts.Count; i++)
+                    {
+                        <tr>
+                            <td>@Model.Contacts[i].Nom</td>
+                            <td>@Model.Contacts[i].Mail</td>
+                            <td>@Model.Contacts[i].Telephone</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Compétences</h2>
+        <ul>
+            @if (Model.Porteur)
+            {
+                <li>Porteur</li>
+            }
+            @if (Model.Semis_Remorque)
+            {
+                <li>Semi-remorque</li>
+            }
+            @if (Model.Vul)
+            {
+                <li>Vul</li>
+            }
+            @if (Model.Haillon)
+            {
+                <li>Hayon</li>
+            }
+            @if (Model.Tire_Palette)
+            {
+                <li>Tire-palette</li>
+            }
+            @if (Model.Remorque_Tautliner)
+            {
+                <li>Remorque tautliner</li>
+            }
+            @if (Model.Remorque_Fourgon)
+            {
+                <li>Remorque fourgon</li>
+            }
+            @if (Model.Remorque_Frigorifique)
+            {
+                <li>Remorque frigorifique</li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-8">
+        <h2>Commentaire(s)</h2>
+        <p>@Model.Commentaire</p>
+        <div style="display: flex;flex-direction: row-reverse;">
+            <input type="button" class="btn btn-danger" value="Supprimer" onclick="suppress_entreprise()" />
+            <input type="button" class="btn btn-light" value="Modifier" onclick="modify_entreprise()" />
+        </div>
+    </div>
+</div>
