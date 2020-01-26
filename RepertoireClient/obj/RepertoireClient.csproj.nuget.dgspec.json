@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Dev\\Projects\\Repertoire-Client\\RepertoireClient\\RepertoireClient.csproj": {}
+    "F:\\Dev\\Projects\\[C#,ASPNET] Repertoire-Client\\RepertoireClient\\RepertoireClient.csproj": {}
   },
   "projects": {
-    "F:\\Dev\\Projects\\Repertoire-Client\\RepertoireClient\\RepertoireClient.csproj": {
+    "F:\\Dev\\Projects\\[C#,ASPNET] Repertoire-Client\\RepertoireClient\\RepertoireClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Dev\\Projects\\Repertoire-Client\\RepertoireClient\\RepertoireClient.csproj",
+        "projectUniqueName": "F:\\Dev\\Projects\\[C#,ASPNET] Repertoire-Client\\RepertoireClient\\RepertoireClient.csproj",
         "projectName": "RepertoireClient",
-        "projectPath": "F:\\Dev\\Projects\\Repertoire-Client\\RepertoireClient\\RepertoireClient.csproj",
+        "projectPath": "F:\\Dev\\Projects\\[C#,ASPNET] Repertoire-Client\\RepertoireClient\\RepertoireClient.csproj",
         "packagesPath": "C:\\Users\\Quentin\\.nuget\\packages\\",
-        "outputPath": "F:\\Dev\\Projects\\Repertoire-Client\\RepertoireClient\\obj\\",
+        "outputPath": "F:\\Dev\\Projects\\[C#,ASPNET] Repertoire-Client\\RepertoireClient\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Quentin\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -258,6 +258,8 @@ namespace RepertoireClient.ViewModel
         {
             switch (day.ToLower())
             {
+                case "-":
+                    return 8;
                 case "lundi":
                     return 1;
                 case "mardi":

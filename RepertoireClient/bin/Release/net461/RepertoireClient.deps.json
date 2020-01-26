@@ -16,7 +16,7 @@
     "warningsAsErrors": false,
     "optimize": true,
     "keyFile": "fichier.snk",
-    "emitEntryPoint": true,
+    "emitEntryPoint": false,
     "xmlDoc": false,
     "debugType": "full"
   },

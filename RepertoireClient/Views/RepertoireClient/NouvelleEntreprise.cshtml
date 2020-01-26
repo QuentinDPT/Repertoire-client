@@ -35,7 +35,7 @@
         <p>Tél : <input type="text" id="telephone" class="transparent" placeholder="Téléphone" required/></p>
         <p>Fax : <input type="text" id="fax" class="transparent" placeholder="Fax" /></p>
         <p><input type="text" id="cde_ordre" class="transparent" placeholder="Code d'ordre"/></p>
-        <p><input type="text" id="web_site" class="btn btn-primary btn-lg" placeholder="Site Web &raquo;" /></p>
+        <p><input type="text" id="web_site" class="btn btn-outline-primary btn-lg" style="background-color: transparent;color: #6caff8;" placeholder="Site Web &raquo;" /></p>
     </div>
     <div class="col-md-6">
         <h2>Horaires</h2>
@@ -64,11 +64,12 @@
         <p>
             Sauf le
             <select id="jour_exeptionnel">
+                <option selected="selected">-</option>
                 <option>Lundi</option>
                 <option>Mardi</option>
                 <option>Mercredi</option>
                 <option>Jeudi</option>
-                <option selected="selected">Vendredi</option>
+                <option>Vendredi</option>
                 <option>Samedi</option>
                 <option>Dimanche</option>
             </select><br />de <input type="time" id="feAM"> à <input type="time" id="fePM"><br />
@@ -102,7 +103,7 @@
 <div class="row">
     <div class="col-md-4">
         <h2>Compétences</h2>
-        <p>Materiel</p>
+        <p>Matériel</p>
         <ul class="checkbox">
             <li><input type="checkbox" id="porteur" /> Porteur</li>
             <li><input type="checkbox" id="semis" /> Semi-remorque</li>
@@ -141,8 +142,8 @@
             <div id="last_contact"></div>' ;
 
         document.getElementById("btn_supp_contact_" + count_contacts).addEventListener("click", function (e) {
-            document.getElementById("contact_" + e.toElement.id.substring(17)).outerHTML = "";
-            console.log("suppression : " + "contact_" + e.toElement.id.substring(17));
+            document.getElementById("contact_" + e.target.id.substring(17)).outerHTML = "";
+            console.log("suppression : " + "contact_" + e.target.id.substring(17));
         });
 
         count_contacts++;

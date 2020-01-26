@@ -38,8 +38,11 @@
         <h2>Horaires</h2>
         <p>Du @Model.JourOuverture au @Model.JourFermeture<br/>
         De @Model.OuvertureAM à @Model.FermetureAM - @Model.OuverturePM à @Model.FermeturePM</p>
+        @if (Model.JourFermeture_exceptionnelle != "-")
+        {
         <p>Sauf le @Model.JourFermeture_exceptionnelle de @Model.Fermeture_exceptionnelleAM à @Model.Fermeture_exceptionnellePM<br/>
         (@Model.Fermeture_exceptionnelleSpecification)</p>
+        }
     </div>
 </div>
 <div class="row">

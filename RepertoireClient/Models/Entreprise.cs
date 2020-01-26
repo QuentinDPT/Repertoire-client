@@ -164,9 +164,9 @@ namespace RepertoireClient.Models
         /// <returns>View model associé au model</returns>
         public ViewModel.Entreprise toVM()
         {
-            string jfe = intToDay((int)this.Fermeture_exceptionnelleAM.DayOfWeek);
-            string jo = intToDay((int)this.OuvertureAM.DayOfWeek);
-            string jf = intToDay((int)this.FermeturePM.DayOfWeek);
+            string jfe = intToDay((int)this.Fermeture_exceptionnelleAM.Day);
+            string jo = intToDay((int)this.OuvertureAM.Day);
+            string jf = intToDay((int)this.FermeturePM.Day);
 
             return new ViewModel.Entreprise()
             {
@@ -243,6 +243,8 @@ namespace RepertoireClient.Models
         {
             switch (day)
             {
+                case 8:
+                    return "-";
                 case 1:
                     return "Lundi";
                 case 2:

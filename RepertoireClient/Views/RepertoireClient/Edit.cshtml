@@ -40,7 +40,7 @@
         <p>Tél : <input type="text" id="telephone" class="transparent" value="@Model.Telephone" placeholder="Téléphone" required/></p>
         <p>Fax : <input type="text" id="fax" class="transparent" value="@Model.Fax" placeholder="Fax" /></p>
         <p><input type="text" id="cde_ordre" class="transparent" value="@Model.Code_Ordre" placeholder="Code d'ordre" /></p>
-        <p><input type="text" id="web_site" class="btn btn-primary btn-lg" value="@Model.Site" placeholder="Site Web &raquo;" /></p>
+        <p><input type="text" id="web_site" class="btn btn-outline-primary btn-lg" style="background-color: transparent;color: #6caff8;" value="@Model.Site" placeholder="Site Web &raquo;" /></p>
     </div>
     <div class="col-md-6">
         <h2>Horaires</h2>
@@ -192,7 +192,18 @@
             <select id="jour_exeptionnel">
                 @switch (Model.JourFermeture_exceptionnelle)
                 {
+                    case "Lundi":
+                        <option>-</option>
+                        <option selected="selected">Lundi</option>
+                        <option>Mardi</option>
+                        <option>Mercredi</option>
+                        <option>Jeudi</option>
+                        <option>Vendredi</option>
+                        <option>Samedi</option>
+                        <option>Dimanche</option>
+                        break;
                     case "Mardi":
+                        <option>-</option>
                         <option>Lundi</option>
                         <option selected="selected">Mardi</option>
                         <option>Mercredi</option>
@@ -202,6 +213,7 @@
                         <option>Dimanche</option>
                         break;
                     case "Mercredi":
+                        <option>-</option>
                         <option>Lundi</option>
                         <option>Mardi</option>
                         <option selected="selected">Mercredi</option>
@@ -211,6 +223,7 @@
                         <option>Dimanche</option>
                         break;
                     case "Jeudi":
+                        <option>-</option>
                         <option>Lundi</option>
                         <option>Mardi</option>
                         <option>Mercredi</option>
@@ -220,6 +233,7 @@
                         <option>Dimanche</option>
                         break;
                     case "Vendredi":
+                        <option>-</option>
                         <option>Lundi</option>
                         <option>Mardi</option>
                         <option>Mercredi</option>
@@ -229,6 +243,7 @@
                         <option>Dimanche</option>
                         break;
                     case "Samedi":
+                        <option>-</option>
                         <option>Lundi</option>
                         <option>Mardi</option>
                         <option>Mercredi</option>
@@ -238,6 +253,7 @@
                         <option>Dimanche</option>
                         break;
                     case "Dimanche":
+                        <option>-</option>
                         <option>Lundi</option>
                         <option>Mardi</option>
                         <option>Mercredi</option>
@@ -247,7 +263,8 @@
                         <option selected="selected">Dimanche</option>
                         break;
                     default:
-                        <option selected="selected">Lundi</option>
+                        <option selected="selected">-</option>
+                        <option>Lundi</option>
                         <option>Mardi</option>
                         <option>Mercredi</option>
                         <option>Jeudi</option>
@@ -429,6 +446,14 @@
 
     var count_contacts = @Model.Contacts.Count +1;
 
+    for (let i = 0; i < @Model.Contacts.Count ; i++) {
+        document.getElementById("btn_supp_contact_" + i).addEventListener("click", function (e) {
+                        document.getElementById("contact_" + e.target.id.substring(17)).outerHTML = "";
+                        console.log("suppression : " + "contact_" + e.target.id.substring(17));
+                    });
+    }
+
+
     btn_add_contact.addEventListener("click", function () {
         document.getElementById("last_contact").outerHTML =
             '<tr id="contact_' + count_contacts + '">\
@@ -440,8 +465,8 @@
             <div id="last_contact"></div>' ;
 
         document.getElementById("btn_supp_contact_" + count_contacts).addEventListener("click", function (e) {
-                        document.getElementById("contact_" + e.toElement.id.substring(17)).outerHTML = "";
-                        console.log("suppression : " + "contact_" + e.toElement.id.substring(17));
+                        document.getElementById("contact_" + e.target.id.substring(17)).outerHTML = "";
+                        console.log("suppression : " + "contact_" + e.target.id.substring(17));
                     });
 
         count_contacts++;

@@ -16,7 +16,7 @@ namespace RepertoireClient
 
         public static void Main(string[] args)
         {
-            try
+            if (System.IO.File.Exists(parameters))
             {
                 string[] params_ = System.IO.File.ReadAllLines(parameters);
 
@@ -33,13 +33,40 @@ namespace RepertoireClient
                     }
                 }
 
-            }catch(Exception e)
+                if (!System.IO.File.Exists(Services.IO.Document))
+                {
+                    System.IO.File.WriteAllLines("./data.csv", new string[] {
+                        "<ENTREPRISES>",
+                        "",
+                        "<CONTACTS>",
+                        ""});
+
+                    // TOAST pour la création du document
+
+
+                }
+                else
+                {
+                    // TOAST pour le démarrage avec succès
+
+                }
+
+            }else
             {
                 System.IO.File.WriteAllLines(parameters, new string[] {
                     "<properties>",
-                    "  <file></file>",
+                    "  <file>./data.csv</file>",
                     "  <delimitter>;</delimitter>",
                     "</properties>"});
+
+                System.IO.File.WriteAllLines("./data.csv", new string[] {
+                    "<ENTREPRISES>",
+                    "",
+                    "<CONTACTS>",
+                    ""});
+
+                // TOAST pour le premier démarage
+                
             }
 
             CreateWebHostBuilder(args).Build().Run();

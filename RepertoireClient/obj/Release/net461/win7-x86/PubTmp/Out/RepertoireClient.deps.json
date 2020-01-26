@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETFramework,Version=v4.6.1/win7-x86",
-    "signature": "68bff979829c41a841c4a21c491da2eb14e92bff"
+    "signature": ""
   },
   "compilationOptions": {
     "defines": [
@@ -10,13 +10,13 @@
       "NETFRAMEWORK",
       "NET461"
     ],
-    "languageVersion": "",
+    "languageVersion": "7.3",
     "platform": "x86",
     "allowUnsafe": false,
     "warningsAsErrors": false,
     "optimize": true,
     "keyFile": "fichier.snk",
-    "emitEntryPoint": true,
+    "emitEntryPoint": false,
     "xmlDoc": false,
     "debugType": "full"
   },
@@ -31,25 +31,26 @@
           "Microsoft.AspNetCore.StaticFiles": "2.2.0",
           "Microsoft.EntityFrameworkCore.Design": "2.2.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.0",
+          "Microsoft.EntityFrameworkCore.Tools": "2.2.0",
           "Microsoft.VisualStudio.Web.BrowserLink": "2.2.0",
           "Microsoft.CSharp.Reference": "4.0.0.0",
           "mscorlib": "4.0.0.0",
           "System.ComponentModel.Composition": "4.0.0.0",
           "System.ComponentModel.DataAnnotations": "4.0.0.0",
-          "System.Core": "4.0.0.0",
-          "System.Data": "4.0.0.0",
           "System.Data.OracleClient": "4.0.0.0",
-          "System": "4.0.0.0",
-          "System.Drawing": "4.0.0.0",
           "System.Net": "4.0.0.0",
-          "System.Numerics": "4.0.0.0",
           "System.Security": "4.0.0.0",
           "System.ServiceProcess": "4.0.0.0",
           "System.Transactions": "4.0.0.0",
+          "System.Core": "4.0.0.0",
+          "System.Data": "4.0.0.0",
+          "System": "4.0.0.0",
+          "System.Drawing": "4.0.0.0",
+          "System.IO.Compression.FileSystem": "4.0.0.0",
+          "System.Numerics": "4.0.0.0",
+          "System.Runtime.Serialization": "4.0.0.0",
           "System.Xml": "4.0.0.0",
           "System.Xml.Linq": "4.0.0.0",
-          "System.IO.Compression.FileSystem": "4.0.0.0",
-          "System.Runtime.Serialization": "4.0.0.0",
           "System.Reflection.Emit": "0.0.0.0",
           "System.Reflection.Emit.ILGeneration": "0.0.0.0",
           "System.Reflection.Emit.Lightweight": "0.0.0.0",
@@ -181,39 +182,14 @@
           ".NETFramework/v4.6.1/System.ComponentModel.DataAnnotations.dll": {}
         }
       },
-      "System.Core/4.0.0.0": {
-        "compile": {
-          ".NETFramework/v4.6.1/System.Core.dll": {}
-        }
-      },
-      "System.Data/4.0.0.0": {
-        "compile": {
-          ".NETFramework/v4.6.1/System.Data.dll": {}
-        }
-      },
       "System.Data.OracleClient/4.0.0.0": {
         "compile": {
           ".NETFramework/v4.6.1/System.Data.OracleClient.dll": {}
         }
       },
-      "System/4.0.0.0": {
-        "compile": {
-          ".NETFramework/v4.6.1/System.dll": {}
-        }
-      },
-      "System.Drawing/4.0.0.0": {
-        "compile": {
-          ".NETFramework/v4.6.1/System.Drawing.dll": {}
-        }
-      },
       "System.Net/4.0.0.0": {
         "compile": {
           ".NETFramework/v4.6.1/System.Net.dll": {}
-        }
-      },
-      "System.Numerics/4.0.0.0": {
-        "compile": {
-          ".NETFramework/v4.6.1/System.Numerics.dll": {}
         }
       },
       "System.Security/4.0.0.0": {
@@ -231,6 +207,41 @@
           ".NETFramework/v4.6.1/System.Transactions.dll": {}
         }
       },
+      "System.Core/4.0.0.0": {
+        "compile": {
+          ".NETFramework/v4.6.1/System.Core.dll": {}
+        }
+      },
+      "System.Data/4.0.0.0": {
+        "compile": {
+          ".NETFramework/v4.6.1/System.Data.dll": {}
+        }
+      },
+      "System/4.0.0.0": {
+        "compile": {
+          ".NETFramework/v4.6.1/System.dll": {}
+        }
+      },
+      "System.Drawing/4.0.0.0": {
+        "compile": {
+          ".NETFramework/v4.6.1/System.Drawing.dll": {}
+        }
+      },
+      "System.IO.Compression.FileSystem/4.0.0.0": {
+        "compile": {
+          ".NETFramework/v4.6.1/System.IO.Compression.FileSystem.dll": {}
+        }
+      },
+      "System.Numerics/4.0.0.0": {
+        "compile": {
+          ".NETFramework/v4.6.1/System.Numerics.dll": {}
+        }
+      },
+      "System.Runtime.Serialization/4.0.0.0": {
+        "compile": {
+          ".NETFramework/v4.6.1/System.Runtime.Serialization.dll": {}
+        }
+      },
       "System.Xml/4.0.0.0": {
         "compile": {
           ".NETFramework/v4.6.1/System.Xml.dll": {}
@@ -239,16 +250,6 @@
       "System.Xml.Linq/4.0.0.0": {
         "compile": {
           ".NETFramework/v4.6.1/System.Xml.Linq.dll": {}
-        }
-      },
-      "System.IO.Compression.FileSystem/4.0.0.0": {
-        "compile": {
-          ".NETFramework/v4.6.1/System.IO.Compression.FileSystem.dll": {}
-        }
-      },
-      "System.Runtime.Serialization/4.0.0.0": {
-        "compile": {
-          ".NETFramework/v4.6.1/System.Runtime.Serialization.dll": {}
         }
       },
       "System.Reflection.Emit/0.0.0.0": {
@@ -1520,6 +1521,11 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {}
         }
       },
+      "Microsoft.EntityFrameworkCore.Tools/2.2.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Design": "2.2.0"
+        }
+      },
       "Microsoft.Extensions.Caching.Abstractions/2.2.0": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "2.2.0"
@@ -2010,25 +2016,26 @@
           "Microsoft.AspNetCore.StaticFiles": "2.2.0",
           "Microsoft.EntityFrameworkCore.Design": "2.2.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.0",
+          "Microsoft.EntityFrameworkCore.Tools": "2.2.0",
           "Microsoft.VisualStudio.Web.BrowserLink": "2.2.0",
           "Microsoft.CSharp.Reference": "4.0.0.0",
           "mscorlib": "4.0.0.0",
           "System.ComponentModel.Composition": "4.0.0.0",
           "System.ComponentModel.DataAnnotations": "4.0.0.0",
-          "System.Core": "4.0.0.0",
-          "System.Data": "4.0.0.0",
           "System.Data.OracleClient": "4.0.0.0",
-          "System": "4.0.0.0",
-          "System.Drawing": "4.0.0.0",
           "System.Net": "4.0.0.0",
-          "System.Numerics": "4.0.0.0",
           "System.Security": "4.0.0.0",
           "System.ServiceProcess": "4.0.0.0",
           "System.Transactions": "4.0.0.0",
+          "System.Core": "4.0.0.0",
+          "System.Data": "4.0.0.0",
+          "System": "4.0.0.0",
+          "System.Drawing": "4.0.0.0",
+          "System.IO.Compression.FileSystem": "4.0.0.0",
+          "System.Numerics": "4.0.0.0",
+          "System.Runtime.Serialization": "4.0.0.0",
           "System.Xml": "4.0.0.0",
           "System.Xml.Linq": "4.0.0.0",
-          "System.IO.Compression.FileSystem": "4.0.0.0",
-          "System.Runtime.Serialization": "4.0.0.0",
           "System.Reflection.Emit": "0.0.0.0",
           "System.Reflection.Emit.ILGeneration": "0.0.0.0",
           "System.Reflection.Emit.Lightweight": "0.0.0.0",
@@ -2821,7 +2828,11 @@
         }
       },
       "Microsoft.CSharp/4.5.0": {},
-      "Microsoft.DiaSymReader.Native/1.7.0": {},
+      "Microsoft.DiaSymReader.Native/1.7.0": {
+        "native": {
+          "runtimes/win-x86/native/Microsoft.DiaSymReader.Native.x86.dll": {}
+        }
+      },
       "Microsoft.DotNet.PlatformAbstractions/2.1.0": {
         "dependencies": {
           "System.Runtime.InteropServices.RuntimeInformation": "4.3.0"
@@ -2877,6 +2888,11 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {}
+        }
+      },
+      "Microsoft.EntityFrameworkCore.Tools/2.2.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Design": "2.2.0"
         }
       },
       "Microsoft.Extensions.Caching.Abstractions/2.2.0": {
@@ -3166,7 +3182,7 @@
           "System.Security.Principal.Windows": "4.5.0"
         },
         "runtime": {
-          "lib/net461/Microsoft.Win32.Registry.dll": {}
+          "runtimes/win/lib/net461/Microsoft.Win32.Registry.dll": {}
         }
       },
       "Newtonsoft.Json/11.0.2": {
@@ -3208,7 +3224,7 @@
       "System.Console/4.3.0": {},
       "System.Data.SqlClient/4.6.0": {
         "runtime": {
-          "lib/net461/System.Data.SqlClient.dll": {}
+          "runtimes/win/lib/net461/System.Data.SqlClient.dll": {}
         }
       },
       "System.Diagnostics.Debug/4.3.0": {},
@@ -3286,7 +3302,7 @@
           "System.Security.Principal.Windows": "4.5.0"
         },
         "runtime": {
-          "lib/net461/System.Security.AccessControl.dll": {}
+          "runtimes/win/lib/net461/System.Security.AccessControl.dll": {}
         }
       },
       "System.Security.Cryptography.Algorithms/4.3.0": {
@@ -3296,7 +3312,7 @@
       },
       "System.Security.Cryptography.Cng/4.5.0": {
         "runtime": {
-          "lib/net461/System.Security.Cryptography.Cng.dll": {}
+          "runtimes/win/lib/net461/System.Security.Cryptography.Cng.dll": {}
         }
       },
       "System.Security.Cryptography.Encoding/4.3.0": {},
@@ -3325,13 +3341,13 @@
       },
       "System.Security.Principal.Windows/4.5.0": {
         "runtime": {
-          "lib/net461/System.Security.Principal.Windows.dll": {}
+          "runtimes/win/lib/net461/System.Security.Principal.Windows.dll": {}
         }
       },
       "System.Text.Encoding/4.3.0": {},
       "System.Text.Encoding.CodePages/4.3.0": {
         "runtime": {
-          "lib/net46/System.Text.Encoding.CodePages.dll": {}
+          "runtimes/win/lib/netstandard1.3/System.Text.Encoding.CodePages.dll": {}
         }
       },
       "System.Text.Encoding.Extensions/4.3.0": {},
@@ -3859,6 +3875,13 @@
       "sha512": "sha512-rCGBF6Hab9633Dh2xtiAcJnDxf2CjaBrGyoagoCoYHH5Ftbdw5zX/e9ABgif5ngzh7DsrBcgxK/3gHBZ2n+TGA==",
       "path": "microsoft.entityframeworkcore.sqlserver/2.2.0",
       "hashPath": "microsoft.entityframeworkcore.sqlserver.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.Tools/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-F253CmzpL7eXFKpK++/GIVbyVMZyXYq388osdkggsA1eL7c8ZGwHho0jE3LGA+L6WuXm6KbwQMtnt15zZAqzzA==",
+      "path": "microsoft.entityframeworkcore.tools/2.2.0",
+      "hashPath": "microsoft.entityframeworkcore.tools.2.2.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Caching.Abstractions/2.2.0": {
       "type": "package",
@@ -4538,37 +4561,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "System.Core/4.0.0.0": {
-      "type": "referenceassembly",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "System.Data/4.0.0.0": {
-      "type": "referenceassembly",
-      "serviceable": false,
-      "sha512": ""
-    },
     "System.Data.OracleClient/4.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
     },
-    "System/4.0.0.0": {
-      "type": "referenceassembly",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "System.Drawing/4.0.0.0": {
-      "type": "referenceassembly",
-      "serviceable": false,
-      "sha512": ""
-    },
     "System.Net/4.0.0.0": {
-      "type": "referenceassembly",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "System.Numerics/4.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
@@ -4588,12 +4586,22 @@
       "serviceable": false,
       "sha512": ""
     },
-    "System.Xml/4.0.0.0": {
+    "System.Core/4.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
     },
-    "System.Xml.Linq/4.0.0.0": {
+    "System.Data/4.0.0.0": {
+      "type": "referenceassembly",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System/4.0.0.0": {
+      "type": "referenceassembly",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Drawing/4.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
@@ -4603,7 +4611,22 @@
       "serviceable": false,
       "sha512": ""
     },
+    "System.Numerics/4.0.0.0": {
+      "type": "referenceassembly",
+      "serviceable": false,
+      "sha512": ""
+    },
     "System.Runtime.Serialization/4.0.0.0": {
+      "type": "referenceassembly",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Xml/4.0.0.0": {
+      "type": "referenceassembly",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Xml.Linq/4.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
