@@ -1,5 +1,9 @@
 # Repertoire-client
 
+Le répertoire client est une interface qui permet de mettre en forme les données CSV d'un document.
+
+L'application à été développé pour Gefco, mais peut être réutiliser dans d'autres environnements
+
 ## Guide d'installation
 
  - Téléchargez le document `./RepertoireClient/Publication`
